@@ -1,7 +1,7 @@
 # MKSave
 A Simple Static State Saving System. wow, that's a lot of words with S. **SSSS**
 
-##Right, you probabily want to know what this is, and how to use it.
+## Right, you probabily want to know what this is, and how to use it.
 
 ### What?
 Well, the basic concept is definently familiar to you. It's another alternative to things like json, and ini parsers.
