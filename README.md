@@ -1,5 +1,5 @@
 # MKSave
-A Simple Static State Saving System. wow, that's a lot of words with S. **SSSS**
+A Simple Static State Saving System. wow, that's a lot of words with S.
 
 ## Right, you probabily want to know what this is, and how to use it.
 
