@@ -6,7 +6,7 @@ A Simple Static State Saving System. wow, that's a lot of words with S.      **S
 ### What?
 Well, the basic concept is definently familiar to you. It's another alternative to things like json, and ini parsers.
 
-###Why?
+### Why?
 Although this library isn't very extensive and relies on user to add support for custom types It has some clear upsides.
 * 1. Whenever I would use other libraries for storing data, I found myself writing wrappers for them, and it made me think that I might as well make something that I would not have to write a wrapper for for my own uses. 
 * 2. Somewhat related to point 1, but the format of other file savers can be a bit weird some times. Like how most json libraries want you to use string keys like core_obj["some_key"]["some_other_key]["yet_another_key].some_getter_function<some_datatype>(). This constant string map search isn't ideal for performance. And in many cases refferences to these values may break after the file is reloaded. (bool& simple_var = core_obj["you_get_the_path_point"]["by_now"].get<bool>())
