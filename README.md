@@ -4,8 +4,8 @@ A Simple Static State Saving System. wow, that's a lot of words with S.
 ## Right, you probabily want to know what this is, and how to use it.
 
 ### What?
-Well, the basic concept is definently familiar to you. It's another alternative to things like json, and ini parsers.
-The main goal of this data to file saver is that I am trying to keep the data feel as normal as possible to work with in code. 
+Well, the basic concept is definently familiar to you. It's another alternative to things like json, xml, jaml, etc.
+The main goal of this data to file saver is keeping the data simple and accessible within the code.
 
 ### Why?
 Although this library isn't very extensive and relies on user to add support for custom types It has some clear upsides.
