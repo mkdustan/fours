@@ -5,19 +5,18 @@ A Simple Static State Saving System. wow, that's a lot of words with S.
 
 ### What?
 Well, the basic concept is definently familiar to you. It's another alternative to things like json, and ini parsers.
-The main goal of this data to file saver is that I am trying to keep the data looking as default as possible in use.
+The main goal of this data to file saver is that I am trying to keep the data feel as normal as possible to work with in code. 
 
 ### Why?
 Although this library isn't very extensive and relies on user to add support for custom types It has some clear upsides.
 * 1. Whenever I would use other libraries for storing data, I found myself writing wrappers for them, and it made me think that I might as well make something that I would not have to write a wrapper for my own uses. 
-* 2. Somewhat related to point 1, but the format of other file savers can be a bit weird some times. Like how most json libraries want you to use string keys like `core_obj["some_key"]["some_other_key]["yet_another_key].some_getter_function<some_datatype>()`. This constant string map search isn't ideal for performance. And in many cases refferences to these values may break after the file is reloaded. (`bool& simple_var = core_obj["you_get_the_path_point"]["by_now"].get<bool>()`)
-* 3. You can ofc use json to save values for custom structs like rgb colours, but implementation isn't quite as clean and "wrapper free" as I would like it. Which is why MKSave focuses on support of custom datatypes (without using raw data copying, so that you can actually understand the format in the file).
+* 2. The format of other file savers can be a bit weird some times. Like how most json libraries want you to use string keys like `core_obj["some_key"]["some_other_key]["yet_another_key].some_getter_function<some_datatype>()`. This constant string map search isn't ideal for performance. And in many cases refferences to these values may break after the file is reloaded. (`bool& simple_var = core_obj["you_get_the_path_point"]["by_now"].get<bool>()`)
+* 3. You can ofc use other file savers to save values for custom structs like rgb colours, but in most cases implementation isn't quite as clean and "wrapper free" as I would like it. Which is why MKSave focuses on support of custom datatypes (without using raw data copying, so that you can actually understand the format in the file).
  
 ### OK, so what do I need to know?
 
 The only thing you need to know to get started is how to set up a basic file.
 You can see an example of how a file is setup, aswell as how support for custom structs can be added by looking at the example.cpp file.
-
 
 
 # Here is a more in depth guide, for those of you that like reading:
@@ -28,19 +27,17 @@ You can see an example of how a file is setup, aswell as how support for custom 
 Saving and loading pushes the saved variable into a stream:
 you can add support to a custom struct by adding stream support. This can be done by including these two friendly operators inside the struct :)
 I would highly recommend taking a look at example.cpp to see how this has been used there.
-
-  ```cpp
-    friend std::ostream& operator<<(std::ostream& os, const datatype& v)
-	 	{
-	 		// Push formating into os here
-	 		return os;
-	 	}
-	 
-	 	friend std::istream& operator>>(std::istream& is, data_struct& v)
-	 	{
-			// Load the values from is into v here
-	 		return is;
-	 	}
+```cpp
+	friend std::ostream& operator<<(std::ostream& os, const datatype& v)
+	{
+		// Push formating into os here
+		return os;
+	}
+	friend std::istream& operator>>(std::istream& is, data_struct& v)
+	{
+		// Load the values from is into v here
+		return is;
+	}
 ```
 TIP: Keep in mind that spaces seperate inputs, so `os << v.v1 << " " << v.v2;` can be loaded as `is >> v.v1 >> v.v2`
 	
